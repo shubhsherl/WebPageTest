@@ -95,6 +95,46 @@ function GetLocationInfo($location) {
   return $info;
 }
 
+/**
+* Get the information of blocked PC name for agents, which are blocked
+*/
+function GetBlockPcName()
+{
+    $filePath = "block_pc.txt";
+    $data = file_get_contents($filePath);
+    if ($data !== false) {
+        return explode('::', $data);
+    } else {
+        return [];
+    }
+}
+
+/**
+* Set the information of blocked PC name for agents, to block them
+*
+* @param mixed $pc
+*/
+function SetBlockPcName($pc)
+{
+    $data = GetBlockPcName();
+    if (!isset($pc) || in_array($pc, $data)) {
+	    return $data;
+    }
+
+    $filePath = "block_pc.txt";
+
+    array_push($data, $pc);
+    $status = file_put_contents($filePath, join( '::', $data));
+    if ($status !== false) {
+        echo "Data written to file successfully.";
+    } else {
+        $errorMessage = error_get_last();
+        echo "Error writing to file: " . $errorMessage['message'];
+    }
+    return GetBlockPcName();
+}
+
+
 function GetLocationFallbacks($location) {
   $fallback = null;
   if (isset($location) && strlen($location)) {

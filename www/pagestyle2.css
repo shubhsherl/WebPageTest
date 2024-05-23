@@ -338,6 +338,9 @@ body.compact .test_results-content #download {
     text-align: right;
 }
 .test_results-content #testinfo {
+    overflow-y: hidden;
+    width: 100%;
+    white-space: nowrap;
     text-align: left;
     float: left;
 }

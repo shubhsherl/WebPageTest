@@ -628,7 +628,7 @@ $loc = ParseLocations($locations);
                                         <input type="text" name="traceCategories" id="traceCategories" class="text" style="width: 400px;" value="blink,v8,cc,gpu,blink.net,netlog,disabled-by-default-v8.runtime_stats" autocomplete="off">
                                     </li>
                                     <li>
-                                        <input type="checkbox" name="netlog" id="netlog" class="checkbox" style="float: left;width: auto;">
+                                        <input type="checkbox" checked=checked name="netlog" id="netlog" class="checkbox" style="float: left;width: auto;">
                                         <label for="netlog" class="auto_width">
                                             Capture Network Log
                                         </label>
