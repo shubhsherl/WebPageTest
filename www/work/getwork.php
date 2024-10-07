@@ -51,15 +51,6 @@ if ($block_list && strlen($block_list) && strlen($pc)) {
   }
 }
 
-// use it to block any specific testers from file
-$block_list = GetBlockPcName();
-if ($block_list && count($block_list) > 0 && strlen($pc)) {
-    if (in_array($pc, $block_list)) {
-	header("HTTP/1.1 403 Unauthorized");
-	exit;
-    }
-}
-
 $dnsServers = '';
 if (array_key_exists('dns', $_REQUEST))
   $dnsServers = str_replace('-', ',', $_REQUEST['dns']);
